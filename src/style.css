@@ -10,7 +10,7 @@ body {
     align-content: center;
     width: auto;
     align-content: center;
-    margin: 250px;
+    margin: 150px;
     margin-left: 500px;
     margin-right: 500px;
 }
@@ -34,6 +34,8 @@ body {
 
 .displayCtr {
     background-color: aqua;
+    height: 200px;
+    padding: 20px;
 }
 
 .withdetails {
@@ -44,4 +46,22 @@ body {
 .next_seven_days {
     background-color: brown;
     height: 300px;
+}
+
+.headerPart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bodyPart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 30px;
+}
+
+.feelsLike {
+    display: flex;
+    justify-content: space-between;
 }
