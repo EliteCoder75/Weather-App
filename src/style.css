@@ -1,5 +1,47 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-content: center;
+    width: auto;
+    align-content: center;
+    margin: 250px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
 
-p {
-    background-color: blue;
+.today_container {
+    display: flex;
+    gap: 15px;
+}
+
+.nodetails {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    gap: 15px;
+
+}
+
+.searchCtr {
+    display: flex;
+}
+
+.displayCtr {
+    background-color: aqua;
+}
+
+.withdetails {
+    background-color:blueviolet;
+    flex-basis: 50%;
+}
+
+.next_seven_days {
+    background-color: brown;
+    height: 300px;
 }
