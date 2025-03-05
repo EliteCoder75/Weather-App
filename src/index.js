@@ -18,7 +18,7 @@ async function getData(url) {
 }
 
 searchBtn.addEventListener("click", e => {
-    let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ location.value +"?key=7WZWAP7QXVP9KJ446MVHALN93";
+    let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ location.value +"/next6days?key=7WZWAP7QXVP9KJ446MVHALN93";
     let obj = getData(url);
     displayContent.innerHTML = "";
     displayContentDetailed.innerHTML = "";
