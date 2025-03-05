@@ -4,6 +4,7 @@ const searchBtn = document.querySelector(".searchBtn");
 const location = document.getElementById("location_id");
 const displayContent = document.querySelector(".content");
 const displayContentDetailed = document.querySelector(".contentDetailed");
+const next_seven_days_ctr = document.querySelector(".next_seven_days_ctr");
 
 
 console.log(searchBtn);
@@ -22,11 +23,13 @@ searchBtn.addEventListener("click", e => {
     let obj = getData(url);
     displayContent.innerHTML = "";
     displayContentDetailed.innerHTML = "";
+    next_seven_days_ctr.innerHTML = "";
+
 
     obj.then(result => {
         renderfewDetails(result);
         renderWithDetails(result);
-               
+        renderSevenDays(result);
         console.log(result)})
     .catch(err => console.log(err));
 });
@@ -34,25 +37,27 @@ searchBtn.addEventListener("click", e => {
 
 function renderfewDetails(result){
     let newproject = document.createElement("div");
-        newproject.classList.add("newproject"); // also removed the dot prefix here
+        //newproject.classList.add("newproject"); // also removed the dot prefix here
         newproject.innerHTML = `
                     <div class= "headerPart">
                         <div >${result.resolvedAddress}</div>
                         <div >${result.currentConditions.datetime}</div>
                     </div>
                     <div class= "bodyPart">
-                        <div >${result.currentConditions.icon}</div>
+                        <img class="image" />
                         <div >${result.currentConditions.temp}</div>
                         <div >${result.currentConditions.conditions}</div>
                         <div >${result.description}</div>
                      </div>    
                 `;
+                const image = newproject.querySelector(".image");
+                image.src = "images/" + result.currentConditions.icon + ".png";
         displayContent.append(newproject); 
 }
 
 function renderWithDetails(result){
     let newproject = document.createElement("div");
-        //newproject.classList.add("newproject"); // also removed the dot prefix here
+        newproject.classList.add("renderWithDetails"); // also removed the dot prefix here
         newproject.innerHTML = `
                     <div class= "feelsLike">
                         <div >Feels Like</div>
@@ -77,4 +82,55 @@ function renderWithDetails(result){
                      
                 `;
         displayContentDetailed.append(newproject); 
+}
+
+function renderSevenDays(result){
+    let newproject = document.createElement("div");
+        newproject.classList.add("newproject"); // also removed the dot prefix here
+        newproject.innerHTML = `
+                    <div class= "day">
+                        <div >${result.days[0].datetime}</div>
+                        <div >${result.days[0].icon}</div>
+                        <div >${result.days[0].conditions}</div>
+                        <div >${result.days[0].tempmin} / ${result.days[0].tempmax}</div>
+                    </div> 
+                    <div class= "day">
+                        <div >${result.days[1].datetime}</div>
+                        <div >${result.days[1].icon}</div>
+                        <div >${result.days[1].conditions}</div>
+                        <div >${result.days[1].tempmin} / ${result.days[1].tempmax}</div>
+                    </div>
+                    <div class= "day">
+                        <div >${result.days[2].datetime}</div>
+                        <div >${result.days[2].icon}</div>
+                        <div >${result.days[2].conditions}</div>
+                        <div >${result.days[2].tempmin} / ${result.days[2].tempmax}</div>
+                    </div>
+                    <div class= "day">
+                        <div >${result.days[3].datetime}</div>
+                        <div >${result.days[3].icon}</div>
+                        <div >${result.days[3].conditions}</div>
+                        <div >${result.days[3].tempmin} / ${result.days[3].tempmax}</div>
+                    </div>
+                    <div class= "day">
+                        <div >${result.days[4].datetime}</div>
+                        <div >${result.days[4].icon}</div>
+                        <div >${result.days[4].conditions}</div>
+                        <div >${result.days[4].tempmin} / ${result.days[4].tempmax}</div>
+                    </div>
+                    <div class= "day">
+                        <div >${result.days[5].datetime}</div>
+                        <div >${result.days[5].icon}</div>
+                        <div >${result.days[5].conditions}</div>
+                        <div >${result.days[5].tempmin} / ${result.days[5].tempmax}</div>
+                    </div>
+                    <div class= "day">
+                        <div >${result.days[6].datetime}</div>
+                        <div >${result.days[6].icon}</div>
+                        <div >${result.days[6].conditions}</div>
+                        <div >${result.days[6].tempmin} / ${result.days[6].tempmax}</div>
+                    </div>
+                     
+                `;
+        next_seven_days_ctr.append(newproject); 
 }
