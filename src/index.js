@@ -19,8 +19,19 @@ async function getData(url) {
     throw new Error(response.status);
 }
 
+// setting dafault location when loaded or refreshed
+let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Algiers,dz/next6days?unitGroup=metric&key=7WZWAP7QXVP9KJ446MVHALN93";
+let obj = getData(url);
+obj.then(result => {
+    renderfewDetails(result);
+    renderWithDetails(result);
+    renderSevenDays(result);
+    console.log(result)})
+.catch(err => console.log(err));
+
 searchBtn.addEventListener("click", e => {
-    let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ location.value +"/next6days?key=7WZWAP7QXVP9KJ446MVHALN93";
+
+    let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ location.value +"/next6days?unitGroup=metric&key=7WZWAP7QXVP9KJ446MVHALN93";
     let obj = getData(url);
     displayContent.innerHTML = "";
     displayContentDetailed.innerHTML = "";

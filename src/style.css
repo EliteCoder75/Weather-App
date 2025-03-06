@@ -11,8 +11,8 @@ body {
     width: auto;
     align-content: center;
     margin: 150px;
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-left: 480px;
+    margin-right: 480px;
 }
 
 .today_container {
@@ -76,4 +76,9 @@ body {
     display: flex;
     gap: 15px;
     padding: 30px;
+}
+
+.image {
+    height: 50px;
+    width: 70px;
 }
