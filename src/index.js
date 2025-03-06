@@ -1,5 +1,6 @@
 import './style.css'
 
+
 const searchBtn = document.querySelector(".searchBtn");
 const location = document.getElementById("location_id");
 const displayContent = document.querySelector(".content");
@@ -51,7 +52,11 @@ function renderfewDetails(result){
                      </div>    
                 `;
                 const image = newproject.querySelector(".image");
-                image.src = "images/" + result.currentConditions.icon + ".png";
+
+                const graphImage = require('./images/' + result.currentConditions.icon + '.png')
+
+                image.src = graphImage;
+
         displayContent.append(newproject); 
 }
 
@@ -90,47 +95,58 @@ function renderSevenDays(result){
         newproject.innerHTML = `
                     <div class= "day">
                         <div >${result.days[0].datetime}</div>
-                        <div >${result.days[0].icon}</div>
+                        <img class="image" />
                         <div >${result.days[0].conditions}</div>
                         <div >${result.days[0].tempmin} / ${result.days[0].tempmax}</div>
                     </div> 
                     <div class= "day">
                         <div >${result.days[1].datetime}</div>
-                        <div >${result.days[1].icon}</div>
+                        <img class="image" />
                         <div >${result.days[1].conditions}</div>
                         <div >${result.days[1].tempmin} / ${result.days[1].tempmax}</div>
                     </div>
                     <div class= "day">
                         <div >${result.days[2].datetime}</div>
-                        <div >${result.days[2].icon}</div>
+                        <img class="image" />
                         <div >${result.days[2].conditions}</div>
                         <div >${result.days[2].tempmin} / ${result.days[2].tempmax}</div>
                     </div>
                     <div class= "day">
                         <div >${result.days[3].datetime}</div>
-                        <div >${result.days[3].icon}</div>
+                        <img class="image" />
                         <div >${result.days[3].conditions}</div>
                         <div >${result.days[3].tempmin} / ${result.days[3].tempmax}</div>
                     </div>
                     <div class= "day">
                         <div >${result.days[4].datetime}</div>
-                        <div >${result.days[4].icon}</div>
+                        <img class="image" />
                         <div >${result.days[4].conditions}</div>
                         <div >${result.days[4].tempmin} / ${result.days[4].tempmax}</div>
                     </div>
                     <div class= "day">
                         <div >${result.days[5].datetime}</div>
-                        <div >${result.days[5].icon}</div>
+                        <img class="image" />
                         <div >${result.days[5].conditions}</div>
                         <div >${result.days[5].tempmin} / ${result.days[5].tempmax}</div>
                     </div>
                     <div class= "day">
                         <div >${result.days[6].datetime}</div>
-                        <div >${result.days[6].icon}</div>
+                        <img class="image" />
                         <div >${result.days[6].conditions}</div>
                         <div >${result.days[6].tempmin} / ${result.days[6].tempmax}</div>
                     </div>
                      
                 `;
+
+        const images = newproject.querySelectorAll(".image");
+
+        images.forEach( (image, index) => {
+            
+            let graphImage = require('./images/' + result.days[index].icon + '.png')
+
+            image.src = graphImage;})
+
+        
+
         next_seven_days_ctr.append(newproject); 
 }
