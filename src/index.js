@@ -90,26 +90,24 @@ toggleBtn.addEventListener("click", e => {
 
 function renderfewDetails(result){
     let newproject = document.createElement("div");
-        //newproject.classList.add("newproject"); // also removed the dot prefix here
+        newproject.classList.add("mainCtr"); // also removed the dot prefix here
         newproject.innerHTML = `
                     <div class= "headerPart">
                         <div >${result.resolvedAddress}</div>
                         <div >${result.currentConditions.datetime}</div>
                     </div>
                     <div class= "bodyPart">
-                        <img class="image" />
+                        <img class="image1" />
                         <div >${result.currentConditions.temp}<span class="temp">${temp}</span></div>
                         <div >${result.currentConditions.conditions}</div>
                         <div >${result.description}</div>
                      </div>    
                 `;
-        const image = newproject.querySelector(".image");
-
+        const image = newproject.querySelector(".image1");
         const graphImage = require('./images/' + result.currentConditions.icon + '.png')
-
         image.src = graphImage;
-
-        displayContent.append(newproject); 
+        displayContent.append(newproject);
+        
 }
 
 function renderWithDetails(result){
@@ -117,24 +115,29 @@ function renderWithDetails(result){
         newproject.classList.add("renderWithDetails"); // also removed the dot prefix here
         newproject.innerHTML = `
                     <div class= "feelsLike">
+                        <img src=${require('./icons/thermal.png')} class="icon" />
                         <div >Feels Like</div>
-                        <div >${result.currentConditions.feelslike}<span class="temp">${temp}</span></div>
+                        <div class="values">${result.currentConditions.feelslike}<span class="temp">${temp}</span></div>
                     </div>
                     <div class= "feelsLike">
-                        <div >rainProbability </div>
-                        <div >${result.currentConditions.precipprob}</div>
+                        <img src=${require('./icons/rainy.png')} class="icon" />
+                        <div >Rain probability </div>
+                        <div class="values">${result.currentConditions.precipprob}</div>
                     </div>
                     <div class= "feelsLike">
+                        <img src=${require('./icons/wind.png')} class="icon" />
                         <div >Wind Speed</div>
-                        <div >${result.currentConditions.windspeed} <span class="temp">${speed_m_unit}</span></div>
+                        <div class="values">${result.currentConditions.windspeed} <span class="temp">${speed_m_unit}</span></div>
                     </div>
                     <div class= "feelsLike">
+                        <img src=${require('./icons/humidity.png')} class="icon" />
                         <div >Air Humidity</div>
-                        <div >${result.currentConditions.humidity}</div>
+                        <div class="values">${result.currentConditions.humidity}</div>
                     </div>
                     <div class= "feelsLike">
+                        <img src=${require('./icons/uv-index.png')} class="icon" />
                         <div >UV index</div>
-                        <div >${result.currentConditions.uvindex}</div>
+                        <div class="values">${result.currentConditions.uvindex}</div>
                     </div>
                 `;
         displayContentDetailed.append(newproject); 
@@ -148,43 +151,43 @@ function renderSevenDays(result){
                         <div >${result.days[0].datetime}</div>
                         <img class="image" />
                         <div >${result.days[0].conditions}</div>
-                        <div >${result.days[0].tempmin}<span class="temp">${temp}</span> / ${result.days[0].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[0].tempmin}<span class="temp">${temp}</span> / ${result.days[0].tempmax}<span class="temp">${temp}</span></div>
                     </div> 
                     <div class= "day">
                         <div >${result.days[1].datetime}</div>
                         <img class="image" />
                         <div >${result.days[1].conditions}</div>
-                        <div >${result.days[1].tempmin}<span class="temp">${temp}</span> / ${result.days[1].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[1].tempmin}<span class="temp">${temp}</span> / ${result.days[1].tempmax}<span class="temp">${temp}</span></div>
                     </div>
                     <div class= "day">
                         <div >${result.days[2].datetime}</div>
                         <img class="image" />
                         <div >${result.days[2].conditions}</div>
-                        <div >${result.days[2].tempmin}<span class="temp">${temp}</span> / ${result.days[2].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[2].tempmin}<span class="temp">${temp}</span> / ${result.days[2].tempmax}<span class="temp">${temp}</span></div>
                     </div>
                     <div class= "day">
                         <div >${result.days[3].datetime}</div>
                         <img class="image" />
                         <div >${result.days[3].conditions}</div>
-                        <div >${result.days[3].tempmin}<span class="temp">${temp}</span> / ${result.days[3].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[3].tempmin}<span class="temp">${temp}</span> / ${result.days[3].tempmax}<span class="temp">${temp}</span></div>
                     </div>
                     <div class= "day">
                         <div >${result.days[4].datetime}</div>
                         <img class="image" />
                         <div >${result.days[4].conditions}</div>
-                        <div >${result.days[4].tempmin}<span class="temp">${temp}</span> / ${result.days[4].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[4].tempmin}<span class="temp">${temp}</span> / ${result.days[4].tempmax}<span class="temp">${temp}</span></div>
                     </div>
                     <div class= "day">
                         <div >${result.days[5].datetime}</div>
                         <img class="image" />
                         <div >${result.days[5].conditions}</div>
-                        <div >${result.days[5].tempmin}<span class="temp">${temp}</span> / ${result.days[5].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[5].tempmin}<span class="temp">${temp}</span> / ${result.days[5].tempmax}<span class="temp">${temp}</span></div>
                     </div>
                     <div class= "day">
                         <div >${result.days[6].datetime}</div>
                         <img class="image" />
                         <div >${result.days[6].conditions}</div>
-                        <div >${result.days[6].tempmin}<span class="temp">${temp}</span> / ${result.days[6].tempmax}<span class="temp">${temp}</span></div>
+                        <div class = "dif_temp">${result.days[6].tempmin}<span class="temp">${temp}</span> / ${result.days[6].tempmax}<span class="temp">${temp}</span></div>
                     </div>
                      
                 `;
@@ -193,7 +196,7 @@ function renderSevenDays(result){
 
         images.forEach( (image, index) => {
             
-            let graphImage = require('./images/' + result.days[index].icon + '.png')
+            let graphImage = require('./images/' + result.days[index].icon + '.png');
 
             image.src = graphImage;})
 
