@@ -6,7 +6,8 @@ const location = document.getElementById("location_id");
 const displayContent = document.querySelector(".content");
 const displayContentDetailed = document.querySelector(".contentDetailed");
 const next_seven_days_ctr = document.querySelector(".next_seven_days_ctr");
-
+const toggleBtn = document.querySelector(".toggleBtn");
+const current_unit_grp = document.querySelector(".current_unit_grp");
 
 console.log(searchBtn);
 async function getData(url) {
@@ -15,19 +16,31 @@ async function getData(url) {
         let jsonData = await response.json(); 
         return jsonData;
       }
-    
+    if (response.status == 400) {
+    alert("ERROR: "+response.status+ " / check the Location Name");
+    defaultLoad();
+    } 
+
     throw new Error(response.status);
 }
 
 // setting dafault location when loaded or refreshed
-let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Algiers,dz/next6days?unitGroup=metric&key=7WZWAP7QXVP9KJ446MVHALN93";
-let obj = getData(url);
-obj.then(result => {
-    renderfewDetails(result);
-    renderWithDetails(result);
-    renderSevenDays(result);
-    console.log(result)})
-.catch(err => console.log(err));
+function defaultLoad(){
+    let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Algiers,dz/next6days?unitGroup=metric&key=7WZWAP7QXVP9KJ446MVHALN93";
+    let obj = getData(url);
+    location.value="Algiers";
+    toggleBtn.innerText= "change to Farenheit";
+    obj.then(result => {
+        renderfewDetails(result);
+        renderWithDetails(result);
+        renderSevenDays(result);
+        console.log(result)})
+    .catch(err => console.log(err));
+} 
+
+defaultLoad();
+let unitgrp = "metric";
+
 
 searchBtn.addEventListener("click", e => {
 
@@ -36,8 +49,6 @@ searchBtn.addEventListener("click", e => {
     displayContent.innerHTML = "";
     displayContentDetailed.innerHTML = "";
     next_seven_days_ctr.innerHTML = "";
-
-
     obj.then(result => {
         renderfewDetails(result);
         renderWithDetails(result);
@@ -45,6 +56,30 @@ searchBtn.addEventListener("click", e => {
         console.log(result)})
     .catch(err => console.log(err));
 });
+
+toggleBtn.addEventListener("click", e => {
+    if (unitgrp == "metric"){
+        unitgrp = "uk";
+        toggleBtn.innerText="change to Celsius";
+        url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ location.value +"/next6days?unitGroup=us&key=7WZWAP7QXVP9KJ446MVHALN93";
+    }
+    else {
+        unitgrp = "metric";
+        toggleBtn.innerText="change to Farenheit";
+        url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ location.value +"/next6days?unitGroup=metric&key=7WZWAP7QXVP9KJ446MVHALN93";
+    }
+    let obj = getData(url);
+    displayContent.innerHTML = "";
+    displayContentDetailed.innerHTML = "";
+    next_seven_days_ctr.innerHTML = "";
+    obj.then(result => {
+        renderfewDetails(result);
+        renderWithDetails(result);
+        renderSevenDays(result);
+        console.log(result)})
+    .catch(err => console.log(err));
+});
+
 
 
 function renderfewDetails(result){

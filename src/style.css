@@ -82,3 +82,8 @@ body {
     height: 50px;
     width: 70px;
 }
+
+.toggle {
+    display: flex;
+    justify-content: space-around;
+}
