@@ -2,12 +2,19 @@
     font-family: "myFont";
     src: url("./CSS/Fira_Sans/FiraSans-Bold.ttf");
   }
-  
+
+
+@font-face {
+font-family: "latoFont";
+src: url("./CSS/Lato/Lato-Bold.ttf");
+}  
+
 
 html, body {
     margin: 0;
     height: 100%;
     font-family: "myFont";
+    background-color: #003661;
 }
 
 body {
@@ -17,11 +24,21 @@ body {
     align-content: center;
     width: auto;
     align-content: center;
-    margin-top: 120px;
+    margin-top: 80px;
     margin-left: 465px;
     margin-right: 465px;
 }
 
+.searchBtn{
+    margin-right: 0;
+    margin-left: auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    
+}
 .today_container {
     display: flex;
     gap: 15px;
@@ -40,9 +57,10 @@ body {
 }
 
 .displayCtr {
-    background-color: aqua;
+    background-color: #10fc32;
     height: 310px;
     padding: 20px;
+    border-radius: 20px;
 }
 
 .mainCtr {
@@ -54,15 +72,17 @@ body {
 
 
 .withdetails {
-    background-color:blueviolet;
+    background-color:#79c2fe;
     flex-basis: 50%;
     padding: 10px;
+    border-radius: 20px;
 }
 
 .next_seven_days {
-    background-color: brown;
+    background-color: #b0bdff;
     height: 300px;
     padding: 10px;
+    border-radius: 20px;
 }
 
 .headerPart {
@@ -102,16 +122,30 @@ body {
 .image1 {
     height: 60px;
     width: 75px;
+    padding: 10px;
 }
 
 .image {
     height: 35px;
     width: 50px;
+    padding: 10px;
 }
 
 .toggle {
     display: flex;
     justify-content: space-around;
+}
+
+.toggleBtn {
+    font-family: "latoFont";
+    font-size: medium;
+    border-radius: 10px;
+    background-color: #003661;
+    color: white;
+}
+
+.toggleBtn:hover{
+    background-color: red;
 }
 
 .day {
@@ -122,6 +156,15 @@ body {
     align-items: center;
     
 }
+
+.searchIcon {
+    background: url(./icons/search.png);
+    background-size: 30px 30px; /* adjust the size to your needs */
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
 
 .icon {
     width: 30px;
@@ -145,4 +188,20 @@ body {
 
 .bodyPart>div {
     text-align: center;
+}
+
+input {
+    flex-basis: 90%;
+    font-family: "latoFont";
+    font-size: large;
+    padding-left: 15px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+    border: none;
+
+}
+
+label {
+    align-content: center;
 }

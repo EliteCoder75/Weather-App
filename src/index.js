@@ -1,6 +1,5 @@
 import './style.css'
 
-
 const searchBtn = document.querySelector(".searchBtn");
 const location = document.getElementById("location_id");
 const displayContent = document.querySelector(".content");
@@ -9,7 +8,6 @@ const next_seven_days_ctr = document.querySelector(".next_seven_days_ctr");
 const toggleBtn = document.querySelector(".toggleBtn");
 const current_unit_grp = document.querySelector(".current_unit_grp");
 
-console.log(searchBtn);
 async function getData(url) {
     const response = await fetch(url, {mode: 'cors'});
     if (response.status == 200) {
@@ -20,7 +18,6 @@ async function getData(url) {
     alert("ERROR: "+response.status+ " / check the Location Name");
     defaultLoad();
     } 
-
     throw new Error(response.status);
 }
 
@@ -41,7 +38,7 @@ function defaultLoad(){
 defaultLoad();
 let unitgrp = "metric";
 let temp = "°C";
-let speed_m_unit = "Kmh"
+let speed_m_unit = "Kmh";
 
 searchBtn.addEventListener("click", e => {
 
@@ -198,7 +195,7 @@ function renderSevenDays(result){
             
             let graphImage = require('./images/' + result.days[index].icon + '.png');
 
-            image.src = graphImage;})
+            image.src = graphImage;});
 
         next_seven_days_ctr.append(newproject); 
 }
